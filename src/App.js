@@ -88,8 +88,7 @@ class Deck extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: [],
-      flipped: []
+      cards: []
     };
   }
 
@@ -117,23 +116,12 @@ class Deck extends React.Component {
               {this.state.cards.map((card, index) => {
                 const number = card.slice(0, -1);
                 const symbol = card.slice(-1);
-                return index < 2 ? (
-                  <Card
+                return <Card
                     symbol={symbol}
                     number={number}
                     key={index}
-                    className="card flipped"
-                    onClick={this.handleClick}
+                    flipped={parseInt(this.props.flipped) > index}
                   />
-                ) : (
-                  <Card
-                    symbol={symbol}
-                    number={number}
-                    key={index}
-                    className="card"
-                    onClick={this.props.handleClick}
-                  />
-                );
               })}
             </div>
           </div>
@@ -148,8 +136,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Playing Texas</h1>
-        <Deck title="Table" path="table/" flipped="2" />
-        <Deck title="Hand" path="deck/2" flipped="2" />
+        <Deck title="Table" path="table/" flipped="2"/>
+        <Deck title="Hand" path="deck/2" flipped="2"/>
       </header>
     </div>
   );
