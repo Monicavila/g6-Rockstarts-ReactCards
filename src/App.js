@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const CreateCardCorner = (props) => {
@@ -35,8 +35,39 @@ class CreateCardSymbols extends React.Component {
   }
 }
 
-class Card extends React.Component {
-  constructor(props) {
+//class Card extends React.Component {
+  const Card = (props) => {
+    const [isFlipped, setFlip] = useState(props.flipped);
+
+    return (
+      <div
+        className="card"
+        symbol={props.symbol}
+        number={props.number}
+        className={["card", isFlipped ? "flipped" : ""].filter(Boolean).join(' ')}
+        onClick={()=> {setFlip(!isFlipped)}}
+      >
+        <div className="container">
+          <div className="front">
+            <CreateCardCorner
+              symbol={props.symbol}
+              number={props.number}
+            />
+            <CreateCardSymbols
+              symbol={props.symbol}
+              number={props.number}
+            />
+            <CreateCardCorner
+              symbol={props.symbol}
+              number={props.number}
+            />
+          </div>
+          <div className="back"></div>
+        </div>
+      </div>
+    );
+  }
+  {/*constructor(props) {
     super(props);
     this.state = {
       active: true,
@@ -82,17 +113,19 @@ class Card extends React.Component {
       </div>
     );
   }
-}
+}*/}
 
-class Deck extends React.Component {
-  constructor(props) {
+//class Deck extends React.Component
+const Deck = (props) => {
+  const [cards, setCard] = useState([]);
+  {/*constructor(props) {
     super(props);
     this.state = {
       cards: []
     };
-  }
+  }*/}
 
-  componentDidMount() {
+  {/*componentDidMount() {
     (async () => {
       const cards = await (
         await fetch(`http://localhost:4001/${this.props.path}`)
@@ -102,25 +135,34 @@ class Deck extends React.Component {
       //console.log(`http://localhost:4001/${this.props.path}`, this.props.title, cards);
 
     })();
-  }
+  }*/}
 
-  render() {
+  useEffect(()=> {
+    (async () => {
+      const cards = await (
+        await fetch(`http://localhost:4001/${props.path}`)
+      ).json();
+      setCard(cards);
+    })();
+  }, [props.path]);
+
+  //render() {
     return (
       <div>
-        {this.state.cards.length === 0 ? (
+        {cards.length === 0 ? (
           <div>Loading ... </div>
         ) : (
           <div>
-            <h2>{this.props.title}</h2>
+            <h2>{props.title}</h2>
             <div className="deck">
-              {this.state.cards.map((card, index) => {
+              {cards.map((card, index) => {
                 const number = card.slice(0, -1);
                 const symbol = card.slice(-1);
                 return <Card
                     symbol={symbol}
                     number={number}
                     key={index}
-                    flipped={parseInt(this.props.flipped) > index}
+                    flipped={parseInt(props.flipped) > index}
                   />
               })}
             </div>
@@ -128,7 +170,7 @@ class Deck extends React.Component {
         )}
       </div>
     );
-  }
+  //}
 }
 
 function App() {
