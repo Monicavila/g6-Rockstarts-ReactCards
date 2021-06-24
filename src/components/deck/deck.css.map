@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,WAAW,EAAE,MAAM;EACnB,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,MAAM;CACxB",
+    "sources": [
+        "deck.scss"
+    ],
+    "names": [],
+    "file": "deck.css"
+}

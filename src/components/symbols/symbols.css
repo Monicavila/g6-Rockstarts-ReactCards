@@ -1,0 +1,10 @@
+.symbols {
+  position: relative;
+  height: 100%;
+}
+
+.symbols b {
+  position: absolute;
+  font-size: 24px;
+}
+/*# sourceMappingURL=symbols.css.map */

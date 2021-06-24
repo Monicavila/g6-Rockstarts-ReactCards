@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACL,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,IAAI;CACb;;AAED,AAAA,QAAQ,CAAC,CAAC,CAAC;EACT,QAAQ,EAAE,QAAQ;EAClB,SAAS,EAAE,IAAI;CAChB",
+    "sources": [
+        "symbols.scss"
+    ],
+    "names": [],
+    "file": "symbols.css"
+}
