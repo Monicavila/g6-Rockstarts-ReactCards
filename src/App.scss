@@ -1,12 +1,14 @@
+@import './styles/variables.scss';
+
 body {
   height: 100vh;
-  background-color: rgb(36, 107, 90);
-  color: rgb(205, 194, 108);
+  background-color: $color-bgpage;
+  color: $color-text;
   display:flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
-  font-family: 'Roboto', sans-serif;;
+  font-family: $font-page;
   font-weight: bolder;
 }
 
@@ -16,9 +18,4 @@ h1 {
 
 .deck.all .card + .card {
   margin-left: -90px;
-}
-
-#flip-cards {
-  margin-top: 10px;
-  padding: 5px 15px;
 }
