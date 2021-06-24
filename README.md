@@ -17,6 +17,12 @@ Art Copyrights:
      https://dribbble.com/shots/4949840-USPS-pt-X/attachments/1109544
      
      https://www.kickstarter.com/projects/bonafideplayingcards/nouveau-bijoux-playing-cards/description
+     
+     Icon Art
+     
+     https://www.flaticon.com/free-icon/ace-of-spades_2484663
+
+     https://www.flaticon.com/free-icon/cards_827265
 
 
 # Getting Started with Create React App
