@@ -1,3 +1,24 @@
+#REACT Texas simulation card game
+
+Create a deck of cards and deal among players
+
+![ScreenShot](https://github.com/Monicavila/g6-Rockstarts-ReactCards/blob/49887f6bc744520146d7151c54f75e71c98cea0e/src/components/card/images/Screen%20Shot%202021-06-23%20at%2020.26.07.png)
+
+Table open with 5 cards, 2 flipped down and 3 are open
+
+The hand are two cards
+
+Flip the cards with a Click
+
+![ScreenShot](https://github.com/Monicavila/g6-Rockstarts-ReactCards/blob/49887f6bc744520146d7151c54f75e71c98cea0e/src/components/card/images/Screen%20Shot%202021-06-23%20at%2020.24.00.png)
+
+Art Copyrights:
+
+     https://dribbble.com/shots/4949840-USPS-pt-X/attachments/1109544
+     
+     https://www.kickstarter.com/projects/bonafideplayingcards/nouveau-bijoux-playing-cards/description
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
