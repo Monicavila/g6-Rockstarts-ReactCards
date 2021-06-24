@@ -1,4 +1,4 @@
-#REACT Texas simulation card game
+# REACT Texas simulation card game
 
 Create a deck of cards and deal among players
 
