@@ -1,38 +1,36 @@
-//import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
+import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import Deck from '../components/deck/deck'
-import {Deck as DeckBack} from '../library/deck'
+//import {Deck as DeckBack} from '../library/deck'
 
-//const {
-//  GRAPHQL_SERVER
-//} = process.env;
-//
-//const client = new ApolloClient({
-//  uri: GRAPHQL_SERVER,
-//  cache: new InMemoryCache(),
-//});
-//
-//const tableQuery = gql `
-//      query {
-//        table {
-//          number
-//          symbol
-//        }
-//      }
-//`;
-//
-//const getCardsQuery = gql `
-//query GetCards($cards: Int){
-//  getCards(card: $cards) {
-//    number
-//    symbol
-//  } 
-//}`;
+const {
+  GRAPHQL_SERVER
+} = process.env;
 
-export default function Home() {
-  //{title, all, table, hand}
-  //console.log(title, all, table, hand)
+const client = new ApolloClient({
+  uri: GRAPHQL_SERVER,
+  cache: new InMemoryCache(),
+});
+
+const tableQuery = gql `
+      query {
+        table {
+          number
+          symbol
+        }
+      }
+`;
+
+const getCardsQuery = gql `
+query GetCards($cards: Int){
+  getCards(cards: $cards) {
+    number
+    symbol
+  } 
+}`;
+
+export default function Home({title, all, table, hand}) {
   return (
     <div className={styles.home}>
       <Head>
@@ -44,24 +42,24 @@ export default function Home() {
       </Head>
 
       <div>
-        <h1 className={styles.title}>Playing Texas</h1>
-          <Deck className={styles.all} title="Deck" path="/all" />
-          <Deck title="Table" path="cards/" flipped="2" />
-          <Deck title="Hand" path="cards/2" flipped="2" />
+        <h1 className={styles.title}>{title}</h1>
+          <Deck className={styles.all} title="Deck"  cards={all}/>
+          <Deck title="Table" cards={table} flipped="2" />
+          <Deck title="Hand" cards={hand} flipped="2" />
       </div>
     </div>
   )
 }
 
-//export async function getServerSideProps(context) {
-//  const deck = new DeckBack();
-//  const all = deck.dispatchCards(52);
-//  const table = deck.dispatchCards(5);
-//  const hand = deck.dispatchCards(2);
+export async function getServerSideProps(context) {
+//const deck = new DeckBack();
+//const all = deck.dispatchCards(52);
+//const table = deck.dispatchCards(5);
+//const hand = deck.dispatchCards(2);
 
-//const allData = await client.query({query: getCardsQuery, variables: { cards: 52 }, fetchPolicy: 'no-cache'});
-//const tableData = await client.query({query: tableQuery});
-//const handData = await client.query({query: getCardsQuery, variables: { cards: 2 }, fetchPolicy: 'no-cache'});
+const allData = await client.query({query: getCardsQuery, variables: { cards: 10 }, fetchPolicy: 'no-cache'});
+const tableData = await client.query({query: tableQuery});
+const handData = await client.query({query: getCardsQuery, variables: { cards: 2 }, fetchPolicy: 'no-cache'});
 
 //const allData = await (await fetch('http://localhost:4000', {
 //  method: 'POST',
@@ -117,12 +115,21 @@ export default function Home() {
 //  })
 //})).json();
 
-//  return {
-//    props: {
-//      title: 'Playing Texas',
-//      all: allData.data.getCardsQuery,
-//      table: tableData.data.tableQuery,
-//      hand: handData.data.getCardsQuery
-//    }, // will be passed to the page component as props
-//  }
-//}
+return {
+  props: {
+    title: 'Playing Texas',
+    all: allData.data.getCards,
+    table: tableData.data.table,
+    hand: handData.data.getCards
+  }, // will be passed to the page component as props
+}
+
+//    return {
+//      props: {
+//        title: 'Playing Texas',
+//        all,
+//        table,
+//        hand
+//      }
+//    }
+}
