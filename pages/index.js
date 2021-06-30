@@ -13,6 +13,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const fullDeckQuery = gql `
+      query {
+        deck {
+          number
+          symbol
+        }
+      }
+`;
 const tableQuery = gql `
       query {
         table {
@@ -23,12 +31,13 @@ const tableQuery = gql `
 `;
 
 const getCardsQuery = gql `
-query GetCards($cards: Int){
-  getCards(cards: $cards) {
-    number
-    symbol
-  } 
-}`;
+      query GetCards($cards: Int){
+        getCards(cards: $cards) {
+          number
+          symbol
+        } 
+      }
+`;
 
 export default function Home({title, all, table, hand}) {
   return (
@@ -43,7 +52,7 @@ export default function Home({title, all, table, hand}) {
 
       <div>
         <h1 className={styles.title}>{title}</h1>
-          <Deck className={styles.all} title="Deck"  cards={all}/>
+          <Deck id="full Deck" title="Deck"  cards={all}/>
           <Deck title="Table" cards={table} flipped="2" />
           <Deck title="Hand" cards={hand} flipped="2" />
       </div>
@@ -57,7 +66,7 @@ export async function getServerSideProps(context) {
 //const table = deck.dispatchCards(5);
 //const hand = deck.dispatchCards(2);
 
-const allData = await client.query({query: getCardsQuery, variables: { cards: 10 }, fetchPolicy: 'no-cache'});
+const allData = await client.query({query: fullDeckQuery});
 const tableData = await client.query({query: tableQuery});
 const handData = await client.query({query: getCardsQuery, variables: { cards: 2 }, fetchPolicy: 'no-cache'});
 
@@ -118,7 +127,7 @@ const handData = await client.query({query: getCardsQuery, variables: { cards: 2
 return {
   props: {
     title: 'Playing Texas',
-    all: allData.data.getCards,
+    all: allData.data.deck,
     table: tableData.data.table,
     hand: handData.data.getCards
   }, // will be passed to the page component as props

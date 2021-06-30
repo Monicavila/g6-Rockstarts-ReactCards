@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import CreateCardSymbols from "../symbols/symbols";
 import styles from './card.module.scss';
 
-const Card = ({ symbol, number, flipped}) => {
+const Card = ({symbol, number, flipped, id}) => {
   const [isFlipped, setFlip] = useState(flipped);
 
   return (
     <div
-      className={styles.card}
+      className={[styles.card, (id ? styles.all : "")].filter(Boolean).join(" ")}
       symbol={symbol}
       number={number}
-      className={[styles.card, (isFlipped ? styles.flipped : "")].filter(Boolean).join(" ")}
+      className={id ? ([styles.card, styles.all, (isFlipped ? styles.flipped : "")].filter(Boolean).join(" ")) : ([styles.card, (isFlipped ? styles.flipped : "")].filter(Boolean).join(" "))}
       onClick={() => {setFlip(!isFlipped)}}
     >
       <div className={styles.container}>
