@@ -1,3 +1,20 @@
+## Now in Next js framework
+
+![ScreenShot](https://github.com/Monicavila/g6-Rockstarts-ReactCards/blob/b359db37804cd563f419c1b12a187ba46edabfb5/components/card/images/Screen%20Shot%202021-06-29%20at%2019.52.24.png)
+
+Art Copyrights:
+
+     https://dribbble.com/shots/4949840-USPS-pt-X/attachments/1109544
+     
+     https://www.kickstarter.com/projects/bonafideplayingcards/nouveau-bijoux-playing-cards/description
+     
+     Icon Art
+     
+     https://www.flaticon.com/free-icon/ace-of-spades_2484663
+
+     https://www.flaticon.com/free-icon/cards_827265
+     
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
